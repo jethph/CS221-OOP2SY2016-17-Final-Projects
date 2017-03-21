@@ -1,0 +1,500 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class CashRegisterMachine 
+{
+
+    CashRegisterMachine() 
+    {    	
+		//Labels
+			JLabel barCode = new JLabel("Input Bar Code: ");
+			JLabel amountTendered = new JLabel("Amount Tendered: ");
+			JLabel amountChange = new JLabel("Change: ");
+			JLabel total = new JLabel("Grand Total: ");
+			barCode.setBounds(250,10,150,20);
+			amountTendered.setBounds(250,70,150,20);
+			amountChange.setBounds(250,130,150,20);
+			total.setBounds(10,230,160,35);
+			
+		//TextFields
+			JTextField txtCode = new JTextField("", 150);
+			JTextField tenderAmount = new JTextField("", 150);
+			JTextField change = new JTextField("", 150);
+			JTextField grandTotal = new JTextField("", 150);
+			txtCode.setBounds(250,30,200,30);
+			txtCode.setFont(new Font("Serif",Font.BOLD,16));
+			tenderAmount.setBounds(250,90,200,30);
+			tenderAmount.setFont(new Font("Serif",Font.BOLD,16));
+			change.setBounds(250,150,200,30);
+			change.setFont(new Font("Serif",Font.BOLD,16));
+			grandTotal.setBounds(10,260,215,35);
+			grandTotal.setFont(new Font("Serif",Font.BOLD,16));
+			
+		//Panel
+			JPanel panel = new JPanel();
+			JButton pay = new JButton("Pay");
+			JButton add = new JButton("Add");
+			JButton voided = new JButton("Void");
+			JButton close = new JButton("Close");
+			JButton num1 = new JButton("1");
+			JButton num2 = new JButton("2");
+			JButton num3 = new JButton("3");
+			JButton num4 = new JButton("4");
+			JButton num5 = new JButton("5");
+			JButton num6 = new JButton("6");
+			JButton num7 = new JButton("7");
+			JButton num8 = new JButton("8");
+			JButton num9 = new JButton("9");
+			JButton num0 = new JButton("0");
+			JButton num00 = new JButton("00");
+			JButton dot = new JButton(".");
+			JButton enter = new JButton("ENTER");
+			JButton no1 = new JButton("1");
+			JButton no2 = new JButton("2");
+			JButton no3 = new JButton("3");
+			JButton no4 = new JButton("4");
+			JButton no5 = new JButton("5");
+			JButton no6 = new JButton("6");
+			JButton no7 = new JButton("7");
+			JButton no8 = new JButton("8");
+			JButton no9 = new JButton("9");
+			JButton no0 = new JButton("0");
+			JButton no00 = new JButton("00");
+			JButton point = new JButton(".");
+			JButton ent = new JButton("ENTER");
+			panel.setBounds(10,10,500,350);
+        	panel.setLayout(null);
+        	panel.add(pay);
+        	panel.add(add);
+        	panel.add(close);
+        	panel.add(voided);
+        	panel.add(barCode);
+        	panel.add(amountTendered);
+        	panel.add(amountChange);
+        	panel.add(tenderAmount);
+        	panel.add(change);
+    		panel.add(txtCode);
+    		panel.add(total);
+    		panel.add(grandTotal);
+    		panel.add(num1);
+    		panel.add(num2);
+    		panel.add(num3);
+    		panel.add(num4);
+    		panel.add(num5);
+    		panel.add(num6);
+    		panel.add(num7);
+    		panel.add(num8);
+    		panel.add(num9);
+    		panel.add(num00);
+    		panel.add(num0);
+    		panel.add(dot);
+    		panel.add(enter);
+    		panel.add(no1);
+    		panel.add(no2);
+    		panel.add(no3);
+    		panel.add(no4);
+    		panel.add(no5);
+    		panel.add(no6);
+    		panel.add(no7);
+    		panel.add(no8);
+    		panel.add(no9);
+    		panel.add(no00);
+    		panel.add(no0);
+    		panel.add(point);
+    		panel.add(ent);
+    		panel.validate();
+    		panel.repaint();
+    		
+    	//Buttons
+    		class ButList implements ActionListener
+    		{
+    			String view;
+    			
+    			public void actionPerformed(ActionEvent act)
+    			{
+    				if (act.getSource() == no1)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + "1");
+    				}
+    				else if (act.getSource() == no2)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + "2");
+    				}
+    				else if (act.getSource() == no3)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + "3");
+    				}
+    				else if (act.getSource() == no4)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + "4");
+    				}
+    				else if (act.getSource() == no5)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + "5");
+    				}
+    				else if (act.getSource() == no6)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + "6");
+    				}
+    				else if (act.getSource() == no7)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + "7");
+    				}
+    				else if (act.getSource() == no8)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + "8");
+    				}
+    				else if (act.getSource() == no9)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + "9");
+    				}
+    				else if (act.getSource() == no00)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + "00");
+    				}
+    				else if (act.getSource() == no0)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + "0");
+    				}
+    				else if (act.getSource() == point)
+    				{
+    					view = tenderAmount.getText();
+    					tenderAmount.setText(view + ".");
+    				}
+    				else if (act.getSource() == ent)
+    				{
+    					tenderAmount.setText("");
+    				}
+    			}
+    		}
+    		class ButtonListener implements ActionListener
+			{
+				String display;
+				
+				public void actionPerformed(ActionEvent event)
+    			{
+    				if(event.getSource() == num1)
+    				{
+    					display = txtCode.getText();
+    					txtCode.setText(display + "1");
+    				}
+    				else if(event.getSource() == num2)
+    				{
+    					display = txtCode.getText();
+    					txtCode.setText(display + "2");
+    				}
+    				else if(event.getSource() == num3)
+    				{
+    					display = txtCode.getText();
+    					txtCode.setText(display + "3");
+    				}
+    				else if(event.getSource() == num4)
+    				{
+    					display = txtCode.getText();
+    					txtCode.setText(display + "4");
+    				}
+    				else if(event.getSource() == num5)
+    				{
+    					display = txtCode.getText();
+    					txtCode.setText(display + "5");
+    				}
+    				else if(event.getSource() == num6)
+    				{
+    					display = txtCode.getText();
+    					txtCode.setText(display + "6");
+    				}
+    				else if(event.getSource() == num7)
+    				{
+    					display = txtCode.getText();
+    					txtCode.setText(display + "7");
+    				}
+    				else if(event.getSource() == num8)
+    				{
+    					display = txtCode.getText();
+    					txtCode.setText(display + "8");
+    				}
+    				else if(event.getSource() == num9)
+    				{
+    					display = txtCode.getText();
+    					txtCode.setText(display + "9");
+    				}
+    				else if(event.getSource() == num00)
+    				{
+						display = txtCode.getText();
+    					txtCode.setText(display + "00");
+    				}
+    				else if(event.getSource() == num0)
+    				{
+    					display = txtCode.getText();
+    					txtCode.setText(display + "0");
+    				}
+    				else if(event.getSource() == dot)
+    				{
+    					display = txtCode.getText();
+    					txtCode.setText(display + ".");
+    				}
+    				else if(event.getSource() == enter)
+    				{
+    					String item = txtCode.getText();
+    					String payment = tenderAmount.getText();
+    					double pymnt = Double.parseDouble(payment);
+    					
+    					if (item.equals("001"))
+    					{
+    						Double price = 200.00;
+    						String total = Double.toString(price);
+    						grandTotal.setText(total);
+    					}
+    				}
+    			}
+			}
+			class ActList implements ActionListener
+   			 {
+   			 	public void actionPerformed(ActionEvent a)
+   			 	{
+    				if (a.getSource() == pay)
+    				{
+    					txtCode.setText("");
+   			 			tenderAmount.requestFocus();
+   			 			num1.setVisible(false);
+   			 			num2.setVisible(false);
+   			 			num3.setVisible(false);
+   			 			num4.setVisible(false);
+   			 			num5.setVisible(false);
+   			 			num6.setVisible(false);
+   			 			num7.setVisible(false);
+   			 			num8.setVisible(false);
+   			 			num9.setVisible(false);
+   			 			num00.setVisible(false);
+   			 			num0.setVisible(false);
+   			 			dot.setVisible(false);
+   			 			enter.setVisible(false);
+   			 			no1.setVisible(true);
+   			 			no2.setVisible(true);
+   			 			no3.setVisible(true);
+   			 			no4.setVisible(true);
+   			 			no5.setVisible(true);
+   			 			no6.setVisible(true);
+   			 			no7.setVisible(true);
+   			 			no8.setVisible(true);
+   			 			no9.setVisible(true);
+   			 			no00.setVisible(true);
+   			 			no0.setVisible(true);
+   			 			point.setVisible(true);
+   			 			ent.setVisible(true);
+    				}
+    			}
+  			 }
+  			 class Act implements ActionListener
+  			 {
+  			 	public void actionPerformed(ActionEvent ae)
+  			 	{
+  			 		if (ae.getSource() == add)
+  			 		{
+  			 			tenderAmount.setText("");
+   			 			txtCode.requestFocus();
+  			 			num1.setVisible(true);
+   			 			num2.setVisible(true);
+   			 			num3.setVisible(true);
+   			 			num4.setVisible(true);
+   			 			num5.setVisible(true);
+   			 			num6.setVisible(true);
+   			 			num7.setVisible(true);
+   			 			num8.setVisible(true);
+   			 			num9.setVisible(true);
+   			 			num00.setVisible(true);
+   			 			num0.setVisible(true);
+   			 			dot.setVisible(true);
+   			 			enter.setVisible(true);
+   			 			no1.setVisible(false);
+   			 			no2.setVisible(false);
+   			 			no3.setVisible(false);
+   			 			no4.setVisible(false);
+   			 			no5.setVisible(false);
+   			 			no6.setVisible(false);
+   			 			no7.setVisible(false);
+   			 			no8.setVisible(false);
+   			 			no9.setVisible(false);
+   			 			no00.setVisible(false);
+   			 			no0.setVisible(false);
+   			 			point.setVisible(false);
+   			 			ent.setVisible(false);
+  			 		}
+  			 	}
+  			 }
+    	
+    		ButtonListener Listener = new ButtonListener();
+    		ButList listen = new ButList();
+    	
+    		pay.setBounds(255,220,80,35);
+			pay.setFont(new Font("Serif",Font.BOLD,13));
+			pay.addActionListener(new ActList());
+			
+			add.setBounds(365,220,80,35);
+			add.setFont(new Font("Serif",Font.BOLD,13));
+			add.addActionListener(new Act());
+			
+			voided.setBounds(255,260,80,35);
+			voided.setFont(new Font("Serif",Font.BOLD,13));
+			
+			close.setBounds(365,260,80,35);
+			close.setFont(new Font("Serif",Font.BOLD,13));
+			close.addActionListener(new Action());
+			
+			num1.setBounds(10,10,50,50);
+			num1.setFont(new Font("Serif",Font.BOLD,15));
+			num1.addActionListener(Listener);
+			
+			num2.setBounds(65,10,50,50);
+			num2.setFont(new Font("Serif",Font.BOLD,15));
+			num2.addActionListener(Listener);
+			
+			num3.setBounds(120,10,50,50);
+			num3.setFont(new Font("Serif",Font.BOLD,15));
+			num3.addActionListener(Listener);
+			
+			num4.setBounds(10,65,50,50);
+			num4.setFont(new Font("Serif",Font.BOLD,15));
+			num4.addActionListener(Listener);
+			
+			num5.setBounds(65,65,50,50);
+			num5.setFont(new Font("Serif",Font.BOLD,15));
+			num5.addActionListener(Listener);
+		
+			num6.setBounds(120,65,50,50);
+			num6.setFont(new Font("Serif",Font.BOLD,15));
+			num6.addActionListener(Listener);
+			
+			num7.setBounds(10,120,50,50);
+			num7.setFont(new Font("Serif",Font.BOLD,15));
+			num7.addActionListener(Listener);
+			
+			num8.setBounds(65,120,50,50);
+			num8.setFont(new Font("Serif",Font.BOLD,15));
+			num8.addActionListener(Listener);
+			
+			num9.setBounds(120,120,50,50);
+			num9.setFont(new Font("Serif",Font.BOLD,15));
+			num9.addActionListener(Listener);
+			
+			num00.setBounds(175,10,50,50);
+			num00.setFont(new Font("Serif",Font.BOLD,15));
+			num00.addActionListener(Listener);
+			
+			num0.setBounds(175,65,50,50);
+			num0.setFont(new Font("Serif",Font.BOLD,15));
+			num0.addActionListener(Listener);
+			
+			dot.setBounds(175,120,50,50);
+			dot.setFont(new Font("Serif",Font.BOLD,15));
+			dot.addActionListener(Listener);
+			
+			enter.setBounds(10,175,215,50);
+			enter.setFont(new Font("Serif",Font.BOLD,15));
+			enter.addActionListener(Listener);
+			
+		//tenderAmount Buttons
+			no1.setBounds(10,10,50,50);
+			no1.setFont(new Font("Serif",Font.BOLD,15));
+			no1.addActionListener(listen);
+			no1.setVisible(false);
+			
+			no2.setBounds(65,10,50,50);
+			no2.setFont(new Font("Serif",Font.BOLD,15));
+			no2.addActionListener(listen);
+			no2.setVisible(false);
+			
+			no3.setBounds(120,10,50,50);
+			no3.setFont(new Font("Serif",Font.BOLD,15));
+			no3.addActionListener(listen);
+			no3.setVisible(false);
+			
+			no4.setBounds(10,65,50,50);
+			no4.setFont(new Font("Serif",Font.BOLD,15));
+			no4.addActionListener(listen);
+			no4.setVisible(false);
+			
+			no5.setBounds(65,65,50,50);
+			no5.setFont(new Font("Serif",Font.BOLD,15));
+			no5.addActionListener(listen);
+			no5.setVisible(false);
+			
+			no6.setBounds(120,65,50,50);
+			no6.setFont(new Font("Serif",Font.BOLD,15));
+			no6.addActionListener(listen);
+			no6.setVisible(false);
+			
+			no7.setBounds(10,120,50,50);
+			no7.setFont(new Font("Serif",Font.BOLD,15));
+			no7.addActionListener(listen);
+			no7.setVisible(false);
+			
+			no8.setBounds(65,120,50,50);
+			no8.setFont(new Font("Serif",Font.BOLD,15));
+			no8.addActionListener(listen);
+			no8.setVisible(false);
+			
+			no9.setBounds(120,120,50,50);
+			no9.setFont(new Font("Serif",Font.BOLD,15));
+			no9.addActionListener(listen);
+			no9.setVisible(false);
+			
+			no00.setBounds(175,10,50,50);
+			no00.setFont(new Font("Serif",Font.BOLD,15));
+			no00.addActionListener(listen);
+			no00.setVisible(false);
+			
+			no0.setBounds(175,65,50,50);
+			no0.setFont(new Font("Serif",Font.BOLD,15));
+			no0.addActionListener(listen);
+			no0.setVisible(false);
+			
+			point.setBounds(175,120,50,50);
+			point.setFont(new Font("Serif",Font.BOLD,15));
+			point.addActionListener(listen);
+			point.setVisible(false);
+			
+			ent.setBounds(10,175,215,50);
+			ent.setFont(new Font("Serif",Font.BOLD,15));
+			ent.addActionListener(listen);
+			ent.setVisible(false);
+			
+		//Frame
+			JFrame frame = new JFrame("Cash Register Machine v1.1");
+			frame.add(panel);
+    		frame.setSize(500, 360);
+    		frame.setLayout(null);
+    		frame.setVisible(true);
+    		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    public static void main(String[] args) 
+	{  
+		new CashRegisterMachine();
+    }
+    static class Action implements ActionListener
+    {
+    	public void actionPerformed(ActionEvent e)
+    	{
+    		JFrame exiting = new JFrame();
+    		int n = JOptionPane.showConfirmDialog(exiting, "Are you sure you want to Exit?", "Attention",
+    		JOptionPane.YES_NO_OPTION);
+    		
+    		if (n == JOptionPane.YES_NO_OPTION)
+    		{
+    			System.exit(0);
+    		}
+    	}
+    }  
+}
