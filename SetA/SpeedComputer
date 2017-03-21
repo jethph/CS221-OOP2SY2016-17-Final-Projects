@@ -1,0 +1,89 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class SpeedComputer 
+{
+
+    SpeedComputer()
+    {
+    	JLabel lbldistance = new JLabel("Input Distance: ");
+    	JLabel lbltime = new JLabel("Input Time:");
+    	JLabel lblresult = new JLabel("Speed: ");
+    	JButton Calculate = new JButton("Calculate");
+    	JButton Exit = new JButton("Exit");
+    	JPanel panel = new JPanel();
+    	JFrame frame = new JFrame("Speed Calculator");
+    	JTextField txtResult = new JTextField("", 125);
+    	JTextField txtDistance = new JTextField("", 125);
+    	JTextField txtTime = new JTextField("", 125);
+    
+    	class ButtonListener implements ActionListener
+    	{
+    		public void actionPerformed(ActionEvent event)
+    		{
+    			if (event.getSource() == Calculate)
+    			{
+    				String dstnc = txtDistance.getText();
+    				String tm = txtTime.getText();
+    				double distance = Double.parseDouble(dstnc);
+    				double time = Double.parseDouble(tm);
+    				double speed = distance / time;
+    				String spd = Double.toString(speed);
+    				txtResult.setText(spd);
+    			}
+    		}
+    	}
+    	
+    	ButtonListener listener = new ButtonListener();
+    	
+    	Calculate.setBounds(40,300,100,50);
+    	Exit.setBounds(250,300,100,50);
+    	Calculate.addActionListener(listener);
+    	Exit.addActionListener(new Action());
+    	
+    	txtResult.setBounds(10,220,150,20);
+    	txtTime.setBounds(10,90,150,20);
+    	txtDistance.setBounds(10,40,150,20);
+    	
+    	lblresult.setBounds(10,200,80,20);
+    	lbltime.setBounds(10,60,80,20);
+    	lbldistance.setBounds(10,10,90,20);
+    	
+    	panel.add(lblresult);
+    	panel.add(txtResult);
+    	panel.add(Calculate);
+    	panel.add(Exit);
+    	panel.add(txtTime);
+    	panel.add(lbltime);
+    	panel.add(txtDistance);
+    	panel.add(lbldistance);
+    	panel.setBounds(10,10,400,400);
+    	panel.validate();
+    	panel.setLayout(null);
+    	panel.repaint();
+    	
+    	frame.add(panel);
+    	frame.setSize(400,400);
+    	frame.setVisible(true);
+    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    public static void main(String[] args)
+    {
+    	new SpeedComputer();
+    }
+    static class Action implements ActionListener
+    {
+    	public void actionPerformed(ActionEvent e)
+    	{
+    		JFrame exiting = new JFrame();
+    		int n = JOptionPane.showConfirmDialog(exiting, "Are you sure you want to Exit?", "Attention",
+    		JOptionPane.YES_NO_OPTION);
+    		
+    		if (n == JOptionPane.YES_NO_OPTION)
+    		{
+    			System.exit(0);
+    		}
+    	}
+    }  
+}
