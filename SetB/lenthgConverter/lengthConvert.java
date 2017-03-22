@@ -6,135 +6,283 @@ import javax.swing.border.*;
 
 public class lengthConvert extends JFrame implements ActionListener {
 
-	private JTextField cmText = new JTextField(6);
-	private JLabel cmLabel = new JLabel("Cm");
-	private JButton cmToInchButton = new JButton(" Convert --> ");
-	private JButton inchToCmButton = new JButton(" <-- Convert ");
-	private JPanel cmInchButtons = new JPanel();
-	private JTextField inchText = new JTextField(6);
-	private JLabel inchLabel = new JLabel("Inches");
-	private JPanel cmInchPanel = new JPanel();
-
-	private JTextField mText = new JTextField(6);
-	private JLabel mLabel = new JLabel("Meters");
-	private JButton mTofTButton = new JButton(" Convert --> ");
-	private JButton fTTomButton = new JButton(" <-- Convert ");
-	private JPanel fTmButtons = new JPanel();
-	private JTextField fTText = new JTextField(6);
-	private JLabel fTLabel = new JLabel("Feet"); 
-	private JPanel fTmPanel = new JPanel();
-
-	private JTextField kmText = new JTextField(6);
-	private JLabel kmLabel = new JLabel("Km");
-	private JButton kmToMileButton = new JButton(" Convert --> ");
-	private JButton mileToKmButton = new JButton(" <-- Convert ");
-	private JPanel mileKmButtons = new JPanel();
-	private JTextField mileText = new JTextField(6);
-	private JLabel mileLabel = new JLabel("Miles "); 
-	private JPanel mileKmPanel = new JPanel();
+	private JTextField len1Text = new JTextField(6);
+	private JPanel lenPanel = new JPanel();
+	private JLabel updateLabel = new JLabel();
 
 	public static void main(String[] args) {
 		new lengthConvert();
 	}
+	public lengthConvert(){
+		String[] lenStrings = { "Meters to Centimeters", "Meters to Inch", "Meters to Feet", "Meters to Yard", "Meters to Miles",  
+								"Centimeters to Meters", "Centimeters to Inch", "Centimeters to Yard", "Centimeters to Feet", "Centimeters to Miles", 
+								"Inch to Meters", "Inch to Centimeters", "Inch to Feet", "Inch to Yard", "Inch to Miles", 
+								"Feet to Meters", "Feet to Centimeters", "Feet to Inch", "Feet to Yard", "Feet to Miles", 
+								"Yard to Meters" , "Yard to Centimeters" , "Yard to Inch" , "Yard to Feet" , "Yard to Miles" , 
+								"Miles to Meters" , "Miles to Centimeters" , "Miles to Inch" , "Miles to Feet" , "Miles to Yard"};
 
-	public lengthConvert() {
-		cmInchButtons.setLayout(new BorderLayout());
-		cmInchButtons.add("North", cmToInchButton);
-		cmInchButtons.add("South", inchToCmButton);
-		cmInchPanel.add(cmText);
-		cmInchPanel.add(cmLabel);
-		cmInchPanel.add(cmInchButtons);
-		cmInchPanel.add(inchText);
-		cmInchPanel.add(inchLabel);
+		JComboBox<String> lenList = new JComboBox<String>(lenStrings);
+		//lenList.setSelectedIndex(4);
+		lenList.addActionListener(this);
 
-		fTmButtons.setLayout(new BorderLayout());
-		fTmButtons.add("North", mTofTButton);
-		fTmButtons.add("South", fTTomButton);
-		fTmPanel.add(mText);
-		fTmPanel.add(mLabel);
-		fTmPanel.add(fTmButtons);
-		fTmPanel.add(fTText);
-		fTmPanel.add(fTLabel);
+		lenPanel.setLayout(new BoxLayout(lenPanel, BoxLayout.Y_AXIS));
+		lenPanel.add(lenList);
+		lenPanel.add(len1Text);
+		lenPanel.add(updateLabel);
 
-		mileKmButtons.setLayout(new BorderLayout());
-		mileKmButtons.add("North", kmToMileButton);
-		mileKmButtons.add("South", mileToKmButton);
-		mileKmPanel.add(kmText);
-		mileKmPanel.add(kmLabel);
-		mileKmPanel.add(mileKmButtons);
-		mileKmPanel.add(mileText);
-		mileKmPanel.add(mileLabel);
-
-		add(cmInchPanel);
-		add(fTmPanel);
-		add(mileKmPanel);
-
-		cmToInchButton.setBorder(new BevelBorder(BevelBorder.RAISED));
-		inchToCmButton.setBorder(new BevelBorder(BevelBorder.RAISED));
-		mTofTButton.setBorder(new BevelBorder(BevelBorder.RAISED));
-		fTTomButton.setBorder(new BevelBorder(BevelBorder.RAISED));
-		kmToMileButton.setBorder(new BevelBorder(BevelBorder.RAISED));
-		mileToKmButton.setBorder(new BevelBorder(BevelBorder.RAISED));
-
-		cmToInchButton.addActionListener(this);
-		inchToCmButton.addActionListener(this);
-		mTofTButton.addActionListener(this);
-		fTTomButton.addActionListener(this);
-		kmToMileButton.addActionListener(this);
-		mileToKmButton.addActionListener(this);
+		add(lenPanel);
 
 		setTitle("Convert Length");
 		setLayout(new FlowLayout());
 		setSize(320,300);
 		setLocation(200,200);
 		setVisible(true);
-		}
+	}
 	public void actionPerformed(ActionEvent e) {
+		JComboBox cb = (JComboBox)e.getSource();
+        String lenName = (String)cb.getSelectedItem();
 		double d;
 		String s;
-		DecimalFormat df = new DecimalFormat("0.000");
+		DecimalFormat df = new DecimalFormat("0.000000000");
 
-		if(e.getSource() == cmToInchButton) {
-			s = cmText.getText();
+		if(lenName == "Meters to Centimeters") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 100;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Meters to Inch") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 39.3701;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Meters to Feet") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 3.28084;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Meters to Yard") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 1.09361;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Meters to Miles") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d / 1609.344;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Centimeters to Meters") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d / 100;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Centimeters to Inch") {
+			s = len1Text.getText();
 			d = Double.parseDouble(s);
 			d = d / 2.54;
 			s = df.format(d);
-			inchText.setText(s);
+			updateLabel.setText(s);
 		}
-		if (e.getSource() == inchToCmButton){
-			s = new String(inchText.getText());
+
+		if(lenName == "Centimeters to Feet") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d / 30.48;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Centimeters to Yard") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d / 91.44;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Centimeters to Miles") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d / 160934;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Inch to Meter") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d / 39.3701;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Inch to Centimeters") {
+			s = len1Text.getText();
 			d = Double.parseDouble(s);
 			d = d * 2.54;
 			s = df.format(d);
-			cmText.setText(s);
+			updateLabel.setText(s);
 		}
-		if (e.getSource() == mTofTButton){
-			s = new String(mText.getText());
+
+		if(lenName == "Inch to Feet") {
+			s = len1Text.getText();
 			d = Double.parseDouble(s);
-			d = d / 0.3048;
+			d = d / 12;
 			s = df.format(d);
-			fTText.setText(s);
+			updateLabel.setText(s);
 		}
-		if (e.getSource() == fTTomButton){
-			s = new String(fTText.getText());
+
+		if(lenName == "Inch to Yard") {
+			s = len1Text.getText();
 			d = Double.parseDouble(s);
-			d = d * 0.3048;
+			d = d / 36;
 			s = df.format(d);
-			mText.setText(s);
+			updateLabel.setText(s);
 		}
-		if (e.getSource() == kmToMileButton){
-			s = new String(kmText.getText());
+
+		if(lenName == "Inch to Miles") {
+			s = len1Text.getText();
 			d = Double.parseDouble(s);
-			d = d / 1.609;
+			d = d / 63360;
 			s = df.format(d);
-			mileText.setText(s);
+			updateLabel.setText(s);
 		}
-		if (e.getSource() == mileToKmButton){
-			s = new String(mileText.getText());
+
+		if(lenName == "Feet to Meter") {
+			s = len1Text.getText();
 			d = Double.parseDouble(s);
-			d = d * 1.609;
+			d = d / 3.28084;
 			s = df.format(d);
-			kmText.setText(s);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Feet to Centimeters") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 30.48;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Feet to Inch") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 12;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Feet to Yard") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d / 3;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Feet to Miles") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d / 5280;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Yard to Meter") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d / 1.09361;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Yard to Centimeters") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 91.44;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Yard to Inch") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 36;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Yard to Feet") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 3;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Yard to Miles") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d / 1760;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Miles to Meters") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 1609.344;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Miles to Centimeters") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 160934;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Miles to Inch") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 63360;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Miles to Feet") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 5280;
+			s = df.format(d);
+			updateLabel.setText(s);
+		}
+
+		if(lenName == "Miles to Yard") {
+			s = len1Text.getText();
+			d = Double.parseDouble(s);
+			d = d * 1760;
+			s = df.format(d);
+			updateLabel.setText(s);
 		}
 	}
 }
